@@ -1,0 +1,15 @@
+C:\OOPGB\HomewOOP\HomewOOP\bin\Debug\net6.0\HomewOOP.exe
+C:\OOPGB\HomewOOP\HomewOOP\bin\Debug\net6.0\HomewOOP.deps.json
+C:\OOPGB\HomewOOP\HomewOOP\bin\Debug\net6.0\HomewOOP.runtimeconfig.json
+C:\OOPGB\HomewOOP\HomewOOP\bin\Debug\net6.0\HomewOOP.dll
+C:\OOPGB\HomewOOP\HomewOOP\bin\Debug\net6.0\HomewOOP.pdb
+C:\OOPGB\HomewOOP\HomewOOP\obj\Debug\net6.0\HomewOOP.csproj.AssemblyReference.cache
+C:\OOPGB\HomewOOP\HomewOOP\obj\Debug\net6.0\HomewOOP.GeneratedMSBuildEditorConfig.editorconfig
+C:\OOPGB\HomewOOP\HomewOOP\obj\Debug\net6.0\HomewOOP.AssemblyInfoInputs.cache
+C:\OOPGB\HomewOOP\HomewOOP\obj\Debug\net6.0\HomewOOP.AssemblyInfo.cs
+C:\OOPGB\HomewOOP\HomewOOP\obj\Debug\net6.0\HomewOOP.csproj.CoreCompileInputs.cache
+C:\OOPGB\HomewOOP\HomewOOP\obj\Debug\net6.0\HomewOOP.dll
+C:\OOPGB\HomewOOP\HomewOOP\obj\Debug\net6.0\refint\HomewOOP.dll
+C:\OOPGB\HomewOOP\HomewOOP\obj\Debug\net6.0\HomewOOP.pdb
+C:\OOPGB\HomewOOP\HomewOOP\obj\Debug\net6.0\HomewOOP.genruntimeconfig.cache
+C:\OOPGB\HomewOOP\HomewOOP\obj\Debug\net6.0\ref\HomewOOP.dll
