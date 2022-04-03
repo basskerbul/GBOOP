@@ -24,6 +24,7 @@ Console.WriteLine(a1.Equals(a3));
 Console.WriteLine(a3.Equals(a4));
 
 Console.WriteLine(a1.GetHashCode());
+Console.WriteLine(a1.GetHashCode());
 Console.WriteLine(a2.GetHashCode());
 Console.WriteLine(a3.GetHashCode());
 
@@ -43,12 +44,14 @@ public class BancAccount
     private int accountNumber;
     private decimal balance;
     private AccountType _type;
+    private int hashcode;
 
     public BancAccount(decimal v1, AccountType v2)
     {
         accountNumber = number++;
         balance = v1;
         _type = v2;
+        hashcode = GetHashCode();
     }
     public void Take(int someMoney)
     {
@@ -106,12 +109,17 @@ public class BancAccount
     }
     public override int GetHashCode()
     {
-        Random r = new Random();
-        string hashcode = "1";
-        for(int i = 0; i < 9; i++)
+        if (this.hashcode == 0)
         {
-            hashcode += r.Next(0, 10).ToString();
+            Random r = new Random();
+            string code = "1";
+            for (int i = 0; i < 9; i++)
+            {
+                code += r.Next(0, 10).ToString();
+            }
+            return Convert.ToInt32(code);
         }
-        return Convert.ToInt32(hashcode);
+        else
+            return this.hashcode;
     }
 }
