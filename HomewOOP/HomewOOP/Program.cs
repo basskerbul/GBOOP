@@ -100,9 +100,13 @@ public class BancAccount
     {
         return $"Номер счета: {accountNumber}\nТип счета: {_type}\nБаланс: {balance}";
     }
-    public override bool Equals(object? o)
+    public override bool Equals(Object? o)
     {
-        if (o.GetHashCode == this.GetHashCode)
+        BancAccount bn = (BancAccount)o;
+        if (bn._type == this._type 
+            & bn.balance == this.balance 
+            & bn.GetHashCode() == this.GetHashCode() 
+            & bn.accountNumber == this.accountNumber)
             return true;
         else
             return false;
