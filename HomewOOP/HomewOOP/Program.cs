@@ -7,12 +7,18 @@
 //программу, демонстрирующую функционирование классов).
 
 string text = "Я дерево. Когда меня срубят,";
-ACoder coder = new ACoder();
+ACoder a_coder = new ACoder();
 Console.WriteLine(text);
-Console.WriteLine(coder.Encode(text));
-text = "бвгдеёж";
+text = a_coder.Encode(text);
 Console.WriteLine(text);
-Console.WriteLine(coder.Decode(text));
+text = a_coder.Decode(text);
+Console.WriteLine(text);
+
+text = "разведите костер из моих ветвей";
+BCoder b_coder = new BCoder();
+Console.WriteLine(text);
+text = b_coder.Encode(text);
+Console.WriteLine(text);
 
 interface ICoder
 {
@@ -30,8 +36,7 @@ interface ICoder
 /// </summary>
 class ACoder: ICoder
 {
-    string alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
-    string chars = " .,?!+-=*/@#%^;:~_";
+    string alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя.,?!+-=*/@#%^;:~_";
     
     public string Encode(string text)
     {
@@ -40,34 +45,22 @@ class ACoder: ICoder
         for (int i = 0; i < text.Length; i++)
         {
             if (text[i] == 'я')
+            {
                 newText += 'а';
+                continue;
+            }
+            if (text[i] == ' ')
+            {
+                newText += ' ';
+                continue;
+            }
             for (int j = 0; j < alphabet.Length; j++)
             {
                 if (text[i] == alphabet[j])
                 {
                     newText += alphabet[++j];
+                    break;
                 }
-                switch (text[i])
-                {
-                    case ' ':
-                        newText += ' ';
-                        break;
-                    case '.':
-                        newText += '.';
-                        break;
-                    case ',':
-                        newText += ',';
-                        break;
-                }
-                //for (int z = 0; z < chars.Length; z++)
-                //{
-                //    if (z >= text.Length)
-                //        continue;
-                //    if (chars.Contains(text[z]))
-                //    {
-                //        newText += text[z];
-                //    }
-                //}
             }
         }
         return newText;
@@ -76,22 +69,24 @@ class ACoder: ICoder
     {
         text = text.ToLower();
         string newText = "";
-        string deasph = "";
-        for(int i = alphabet.Length - 1; i >= 0; i--)
-        {
-            deasph += alphabet[i];
-        }
         for (int i = 0; i < text.Length; i++)
         {
-            for (int j = 0; j < deasph.Length; j++)
+            if (text[i] == 'а')
             {
-                if (text[i] == ' ')
-                    newText += ' ';
-                if (text[i] == 'а')
-                    newText += 'я';
-                if (text[i] == deasph[j])
+                newText += 'я';
+                continue;
+            }
+            if (text[i] == ' ')
+            {
+                newText += ' ';
+                continue;
+            }
+            for (int j = 0; j < alphabet.Length; j++)
+            {
+                if (text[i] == alphabet[j])
                 {
-                    newText += deasph[++j];
+                    newText += alphabet[--j];
+                    break;
                 }
             }
         }
@@ -103,9 +98,16 @@ class ACoder: ICoder
 /// </summary>
 class BCoder: ICoder
 {
+    string alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+    string newText = "";
+
     public string Encode(string text)
     {
-        return "TODO";
+        for(int i = 0; i < text.Length; i++)
+        {
+            newText += alphabet[index];
+        }
+        return newText;
     }
     public string Decode(string text)
     {
