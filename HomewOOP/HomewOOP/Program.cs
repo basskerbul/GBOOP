@@ -40,6 +40,13 @@ sealed class Rectangle: Point, IGetArea
         point4X = pointX;
         point4Y = point3Y;
     }
+    public override void PrintInfo()
+    {
+        base.PrintInfo();
+        Console.WriteLine($"Координаты второй вершины: Х {point2X} Y {point2Y}");
+        Console.WriteLine($"Координаты третьей вершины: X {point3X} Y {point3Y}");
+        Console.WriteLine($"Координаты четвертой вершины: X {point4X} Y {point4Y}");
+    }
     new public int[] MovementX(int step)
     {
         int[] result = new int[4]; 
@@ -77,6 +84,11 @@ sealed class Circle: Point, IGetArea
     {
         return 3.14 * (radius * radius);
     }
+    public override void PrintInfo()
+    {
+        base.PrintInfo();
+        Console.WriteLine($"Радиус: {radius}");
+    }
 }
 
 class Point: Figure
@@ -91,6 +103,13 @@ class Point: Figure
         this.positionY = pY;
     }
 
+    public override void PrintInfo()
+    {
+        Console.WriteLine($"Координата по оси Х: {positionX}");
+        Console.WriteLine($"Координата по оси Y: {positionY}");
+        Console.WriteLine($"Цвет фигуры: {color}");
+        Console.WriteLine($"Состояние(видимое/невидимое): {visible}");
+    }
     public override int MovementX(int step)
     {
         return positionX += step;
@@ -120,6 +139,10 @@ abstract class Figure
         this.visible = _visible;
     }
 
+    /// <summary>
+    /// Вывод информации о полях
+    /// </summary>
+    abstract public void PrintInfo();
     /// <summary>
     /// Передвижение по оси Х
     /// </summary>
