@@ -6,18 +6,20 @@
 //расположенную в алфавите на i-й позиции с конца алфавита. (Например, буква В заменяется на букву Э. Написать
 //программу, демонстрирующую функционирование классов).
 
-string text = "Я дерево. Когда меня срубят,";
+string text = "Я дерево Когда меня срубят";
+BCoder b_coder = new BCoder();
+Console.WriteLine(text);
+text = b_coder.Encode(text);
+Console.WriteLine(text);
+text = b_coder.Decode(text);
+Console.WriteLine(text);
+
+text = "разведите костёр из моих ветвей";
 ACoder a_coder = new ACoder();
 Console.WriteLine(text);
 text = a_coder.Encode(text);
 Console.WriteLine(text);
 text = a_coder.Decode(text);
-Console.WriteLine(text);
-
-text = "разведите костер из моих ветвей";
-BCoder b_coder = new BCoder();
-Console.WriteLine(text);
-text = b_coder.Encode(text);
 Console.WriteLine(text);
 
 interface ICoder
@@ -36,24 +38,27 @@ interface ICoder
 /// </summary>
 class ACoder: ICoder
 {
-    string alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя.,?!+-=*/@#%^;:~_";
+    string alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
     
     public string Encode(string text)
     {
-        text = text.ToLower();
         string newText = "";
+        text = text.ToLower();
+
         for (int i = 0; i < text.Length; i++)
-        {
-            if (text[i] == 'я')
-            {
-                newText += 'а';
-                continue;
-            }
+        {   
             if (text[i] == ' ')
             {
                 newText += ' ';
                 continue;
             }
+
+            if (text[i] == 'я')
+            {
+                newText += 'а';
+                continue;
+            }
+
             for (int j = 0; j < alphabet.Length; j++)
             {
                 if (text[i] == alphabet[j])
@@ -67,20 +72,24 @@ class ACoder: ICoder
     }
     public string Decode(string text)
     {
-        text = text.ToLower();
         string newText = "";
+        text = text.ToLower();
+
         for (int i = 0; i < text.Length; i++)
         {
-            if (text[i] == 'а')
-            {
-                newText += 'я';
-                continue;
-            }
             if (text[i] == ' ')
             {
                 newText += ' ';
                 continue;
             }
+
+            if (text[i] == 'а')
+            {
+                newText += 'я';
+                continue;
+
+            }
+
             for (int j = 0; j < alphabet.Length; j++)
             {
                 if (text[i] == alphabet[j])
@@ -99,18 +108,65 @@ class ACoder: ICoder
 class BCoder: ICoder
 {
     string alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
-    string newText = "";
 
     public string Encode(string text)
     {
-        for(int i = 0; i < text.Length; i++)
+        string newText = "";
+        bool isUpper;
+        char toLower;
+
+        for (int i = 0; i < text.Length; i++)
         {
-            newText += alphabet[index];
+            if (text[i] == ' ')
+                newText += ' ';
+
+            isUpper = char.IsUpper(text[i]);
+            toLower = char.ToLower(text[i]);
+
+            for (int j = 0; j < alphabet.Length; j++)
+            {
+                if (isUpper & toLower == alphabet[j])
+                {
+                    newText += alphabet[alphabet.Length - j - 1].ToString().ToUpper();
+                    break;
+                }
+                if (alphabet[j] == text[i])
+                {
+                    newText += alphabet[alphabet.Length - j - 1];
+                    continue;
+                }
+            }
         }
         return newText;
     }
     public string Decode(string text)
     {
-        return "TODO";
+        string newText = "";
+        bool isUpper;
+        char toLower;
+
+        for (int i = 0; i < text.Length; i++)
+        {
+            if (text[i] == ' ')
+                newText += ' ';
+            
+            isUpper = char.IsUpper(text[i]);
+            toLower = char.ToLower(text[i]);
+            
+            for (int j = 0; j < alphabet.Length; j++)
+            {
+                if (isUpper & toLower == alphabet[j])
+                {
+                    newText += alphabet[alphabet.Length - j - 1].ToString().ToUpper();
+                    break;
+                }
+                if(alphabet[j] == text[i])
+                {
+                    newText += alphabet[alphabet.Length - j - 1];
+                    continue;
+                }
+            }
+        }
+        return newText;
     }
 }
