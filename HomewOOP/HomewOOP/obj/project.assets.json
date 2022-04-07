@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\OOPGB\\HomewOOP\\HomewOOP\\HomewOOP.csproj",
+      "projectUniqueName": "C:\\GBOOP\\HomewOOP\\HomewOOP\\HomewOOP.csproj",
       "projectName": "HomewOOP",
-      "projectPath": "C:\\OOPGB\\HomewOOP\\HomewOOP\\HomewOOP.csproj",
+      "projectPath": "C:\\GBOOP\\HomewOOP\\HomewOOP\\HomewOOP.csproj",
       "packagesPath": "C:\\Users\\REFRESH\\.nuget\\packages\\",
-      "outputPath": "C:\\OOPGB\\HomewOOP\\HomewOOP\\obj\\",
+      "outputPath": "C:\\GBOOP\\HomewOOP\\HomewOOP\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
